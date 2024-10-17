@@ -32,7 +32,7 @@ class AssessmentService:
                 joinedload(Form.fields)
                 .joinedload(FormField.field)  
             )
-            .filter(Form.id.in_([1, 17]))
+            .filter(Form.id.in_([1, 2]))
             .order_by(Form.id)  
             .all()
         )
@@ -73,8 +73,8 @@ class AssessmentService:
             .options(
                 joinedload(Form.fields)
                 .joinedload(FormField.field)
-                .joinedload(Field.subfields)  # Carrega os subcampos
-                .joinedload(SubField.options)  # Carrega as opções dos subcampos
+                .joinedload(Field.subfields) 
+                .joinedload(SubField.options)
             )
             .filter(Form.id == id)
             .order_by(Form.id)
